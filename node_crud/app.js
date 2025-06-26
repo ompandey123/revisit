@@ -8,10 +8,21 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 
+app.get("/", (req, res) =>{
+    res.render("login");
+});
 
-app.get("/", (req, res)=>{
-    res.render("index");
+app.post("/login", async (req, res)=>{
+    res.redirect("/home");
 })
+
+app.get("/logout", (req, res)=>{
+    res.redirect("/");
+})
+
+app.get("/home", (req, res)=>{
+    res.render("index");
+});
 
 app.post("/register", async (req, res)=>{
     let {name, email, password, contact} = req.body;
