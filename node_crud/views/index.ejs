@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Revisit</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="w-full h-full bg-zinc-900 p-10 text-white">
+<h1 class="text-3xl tracking-tighter mt-5 ml-10">Welcome to Revisit</h1>
+<h3 class="text-xl tracking-tighter mt-5 ml-10 mb-5">Register Yourself</h3>
+<div>
+    <a href="/read" class="text-blue-500 ml-10">All Users</a>
+</div>
+  <div class="pl-10 pt-5">
+    <form action="/register" method="post" class="w-full max-w-md">
+      <input type="text" name="name" placeholder="Name" class="w-full px-5 py-2 mt-5 border-2 border-blue-500 rounded-lg bg-transparent text-white outline-none focus:ring-2 focus:ring-blue-500"/>
+      <input type="text" name="email" placeholder="Email" class="w-full px-5 py-2 mt-5 border-2 border-blue-500 rounded-lg bg-transparent text-white outline-none focus:ring-2 focus:ring-blue-500"/>
+      <input type="password" name="password" placeholder="Password" class="w-full px-5 py-2 mt-5 border-2 border-blue-500 rounded-lg bg-transparent text-white outline-none focus:ring-2 focus:ring-blue-500"/>  
+      <input type="text" name="contact" placeholder="Contact" class="w-full px-5 py-2 mt-5 border-2 border-blue-500 rounded-lg bg-transparent text-white outline-none focus:ring-2 focus:ring-blue-500"/>  
+      <input type="submit" value="Create User" class="px-5 py-2 bg-blue-500 rounded-lg mt-5">
+    </form>
+  </div>
+</div>
+</body>
+</html>

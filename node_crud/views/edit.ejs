@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Revisit</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="w-full h-full bg-zinc-900 p-10 text-white">
+<h3 class="text-xl tracking-tighter mt-5 ml-10">Update Your Info</h3>
+<div>
+    <a href="/read" class="text-blue-500 ml-10">Go back to read</a>
+</div>
+  <div class="pl-10 pt-5">
+    <form action="/update/<%= user._id %>" method="post" class="w-full max-w-md">
+      <input type="text" name="name" placeholder="Name" value="<%= user.name %>" class="w-full px-5 py-2 mt-5 border-2 border-blue-500 rounded-lg bg-transparent text-white outline-none focus:ring-2 focus:ring-blue-500"/>
+      <input type="text" name="email" placeholder="Email" value="<%= user.email %>" class="w-full px-5 py-2 mt-5 border-2 border-blue-500 rounded-lg bg-transparent text-white outline-none focus:ring-2 focus:ring-blue-500"/>
+      <input type="password" name="password" placeholder="Password" value="<%= user.password %>" class="w-full px-5 py-2 mt-5 border-2 border-blue-500 rounded-lg bg-transparent text-white outline-none focus:ring-2 focus:ring-blue-500"/>  
+      <input type="text" name="contact" placeholder="Contact" value="<%= user.contact %>" class="w-full px-5 py-2 mt-5 border-2 border-blue-500 rounded-lg bg-transparent text-white outline-none focus:ring-2 focus:ring-blue-500"/>  
+      <input type="submit" value="Update User" class="px-5 py-2 bg-blue-500 rounded-lg mt-5">
+    </form>
+  </div>
+</div>
+</body>
+</html>
