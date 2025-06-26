@@ -1,64 +1,72 @@
 const express = require("express");
 const path = require("path");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const cookieParser = require("cookie-parser");
 const userModel = require("./models/usermodel");
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(cookieParser());
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) =>{
+app.get("/", (req, res) => {
     res.render("login");
 });
 
-app.post("/login", async (req, res)=>{
+app.post("/login", async (req, res) => {
     res.redirect("/home");
 })
 
-app.get("/logout", (req, res)=>{
+app.get("/logout", (req, res) => {
     res.redirect("/");
 })
 
-app.get("/home", (req, res)=>{
+app.get("/home", (req, res) => {
     res.render("index");
 });
 
-app.post("/register", async (req, res)=>{
-    let {name, email, password, contact} = req.body;
-    let existUser = await userModel.findOne({email});
-    if(existUser)
-    {
+app.post("/register", async (req, res) => {
+    let { name, email, password, contact } = req.body;
+    let existUser = await userModel.findOne({ email });
+    if (existUser) {
         return res.send("You have already registered");
     }
-        let user = await userModel.create({
-        name,
-        email,
-        password,
-        contact
-    });
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(password, salt, async (err, hash)=>{
+            let user = await userModel.create({
+            name,
+            email,
+            password:hash,
+            contact
+        });
+         res.redirect("read");
+        });
+    })
 
-    res.redirect("read");
+   
 });
 
-app.get("/read", async(req, res)=>{
+app.get("/read", async (req, res) => {
     let users = await userModel.find();
-    res.render("read", {users});
+    res.render("read", { users });
 });
 
-app.get("/delete/:id", async(req, res)=>{
-    let user = await userModel.findOneAndDelete({_id: req.params.id});
+app.get("/delete/:id", async (req, res) => {
+    let user = await userModel.findOneAndDelete({ _id: req.params.id });
     res.redirect("/read");
 });
 
-app.get("/edit/:id", async (req, res)=>{
-    let user = await userModel.findOne({_id: req.params.id});
-    res.render("edit", {user});
+app.get("/edit/:id", async (req, res) => {
+    let user = await userModel.findOne({ _id: req.params.id });
+    res.render("edit", { user });
 });
 
-app.post("/update/:userid", async (req, res)=>{
-    let {name, email, password, contact} = req.body;
-    let updatedUser = await userModel.findOneAndUpdate({_id: req.params.userid}, {name, email, password, contact}, {new:true});
+app.post("/update/:userid", async (req, res) => {
+    let { name, email, password, contact } = req.body;
+    let updatedUser = await userModel.findOneAndUpdate({ _id: req.params.userid }, { name, email, password, contact }, { new: true });
     res.redirect("/read");
 })
 
