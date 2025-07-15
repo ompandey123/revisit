@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="w-full min-h-screen bg-white-900 text-black p-10">
+        <h3 class="text-3xl mb-5">Register to Facegram</h3>
+
+        <form action="/register" method="POST">
+            <input class="px-3 py-2 outline-none rounded-md bg-transparent border-2 border-zinc-800" type="text" name="name" placeholder="name"><br><br>
+            <input class="px-3 py-2 outline-none rounded-md bg-transparent border-2 border-zinc-800" type="text" name="username" placeholder="username"><br><br>
+            <input class="px-3 py-2 outline-none rounded-md bg-transparent border-2 border-zinc-800" type="number" name="age" placeholder="age"><br><br>
+            <input class="px-3 py-2 outline-none rounded-md bg-transparent border-2 border-zinc-800" type="email" name="email" placeholder="email"><br><br>
+            <input class="px-3 py-2 outline-none rounded-md bg-transparent border-2 border-zinc-800" type="password" name="password" placeholder="password"><br><br>
+            <input class="bg-green-600 rounded-md text-white px-5 py-2" type="submit" value="Create Account"><br><br>
+            <h4><a class="text-blue-500" href="/">Login</a> if already having an account</h4>
+        </form>
+    </div>
+</body>
+</html>
